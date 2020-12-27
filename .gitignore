@@ -1,6 +1,5 @@
 *~
 
-searx-docker.service
-caddy
+searx-traefik-docker.service
 srv
 searx
