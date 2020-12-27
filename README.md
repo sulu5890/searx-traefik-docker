@@ -51,7 +51,7 @@ It is possible to the [extend feature](https://docs.docker.com/compose/extends/)
 - stop the service : ```systemctl stop searx-traefik-docker.service```
 - create a new docker-compose-extend.yaml, check with ```start.sh```
 - update searx-traefik-docker.service (see SEARX_DOCKERCOMPOSEFILE)
-- restart the servie  : ```systemctl retart searx-traefik-docker.service```
+- restart the servie  : ```systemctl restart searx-traefik-docker.service```
 
 ## Multi Architecture Docker images
 
