@@ -7,7 +7,7 @@ A simple way to create a searx instance, using traefik. To use this you do need 
 | Name | Description | Docker image | Dockerfile |
 | -- | -- | -- | -- |
 | [Traefik](https://github.com/traefik/traefik) | The Cloud Native Application Proxy (create a LetsEncrypt certificate automatically) | [traefik:v2.3](https://hub.docker.com/_/traefik) | [Dockerfile](https://github.com/traefik/traefik-library-image/blob/6827292e34bb173568e72f20281897946d635e4a/alpine/Dockerfile) |
-| [goStatic](https://github.com/PierreZ/goStatic) | A really small static web server for Docker - used to serve searx-checker's status.json | [pierrezemb/gostatic:latest](https://hub.docker.com/r/pierrezemb/gostatic) | [Dockerfile](https://github.com/PierreZ/goStatic/blob/master/Dockerfile) |
+| [goStatic](https://github.com/PierreZ/goStatic) | A really small static web server for Docker - used to serve searx-checker's status.json as traefik can not serve static files | [pierrezemb/gostatic:latest](https://hub.docker.com/r/pierrezemb/gostatic) | [Dockerfile](https://github.com/PierreZ/goStatic/blob/master/Dockerfile) |
 | [Filtron](https://github.com/asciimoo/filtron) |  Filtering reverse HTTP proxy, bot and abuse protection | [dalf/filtron:latest](https://hub.docker.com/r/dalf/filtron) | See [asciimoo/filtron#4](https://github.com/asciimoo/filtron/pull/4) |
 | [Searx](https://github.com/asciimoo/searx) | searx by itself | [searx/searx:latest](https://hub.docker.com/r/searx/searx) | [Dockerfile](https://github.com/searx/searx/blob/master/Dockerfile) |
 | [Morty](https://github.com/asciimoo/morty) | Privacy aware web content sanitizer proxy as a service. | [dalf/morty:latest](https://hub.docker.com/r/dalf/morty) | [Dockerfile](https://github.com/dalf/morty/blob/master/Dockerfile) |
