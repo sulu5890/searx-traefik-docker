@@ -7,11 +7,9 @@ A simple way to create a searx instance, using traefik. To use this you do need 
 | Name | Description | Docker image | Dockerfile |
 | -- | -- | -- | -- |
 | [Traefik](https://github.com/traefik/traefik) | The Cloud Native Application Proxy (create a LetsEncrypt certificate automatically) | [traefik:v2.3](https://hub.docker.com/_/traefik) | [Dockerfile](https://github.com/traefik/traefik-library-image/blob/6827292e34bb173568e72f20281897946d635e4a/alpine/Dockerfile) |
-| [goStatic](https://github.com/PierreZ/goStatic) | A really small static web server for Docker - used to serve searx-checker's status.json as traefik can not serve static files | [pierrezemb/gostatic:latest](https://hub.docker.com/r/pierrezemb/gostatic) | [Dockerfile](https://github.com/PierreZ/goStatic/blob/master/Dockerfile) |
 | [Filtron](https://github.com/asciimoo/filtron) |  Filtering reverse HTTP proxy, bot and abuse protection | [dalf/filtron:latest](https://hub.docker.com/r/dalf/filtron) | See [asciimoo/filtron#4](https://github.com/asciimoo/filtron/pull/4) |
 | [Searx](https://github.com/asciimoo/searx) | searx by itself | [searx/searx:latest](https://hub.docker.com/r/searx/searx) | [Dockerfile](https://github.com/searx/searx/blob/master/Dockerfile) |
 | [Morty](https://github.com/asciimoo/morty) | Privacy aware web content sanitizer proxy as a service. | [dalf/morty:latest](https://hub.docker.com/r/dalf/morty) | [Dockerfile](https://github.com/dalf/morty/blob/master/Dockerfile) |
-| [Searx-checker](https://github.com/searx/searx-checker) | Check which engines return results of the instance.<br>JSON result available at<br>```https://{SEARX_HOSTNAME}/status```<br>Automatically updated every 24h | [searx/searx-checker:latest](https://hub.docker.com/r/searx/searx-checker) | [Dockerfile](https://github.com/searx/searx-checker/blob/master/Dockerfile) |
 
 ## How to use it
 - [Install docker](https://docs.docker.com/install/)
@@ -20,10 +18,10 @@ A simple way to create a searx instance, using traefik. To use this you do need 
 - Get searx-traefik-docker
 ```sh
 cd /usr/local
-git clone https://gitlab.com/hikarusulu/searx-traefik-docker.git
+git clone https://github.com/sulu5890/searx-traefik-docker.git
 cd searx-traefik-docker
 ```
-- Edit the [.env](https://gitlab.com/hikarusulu/searx-traefik-docker/-/blob/master/.env) file according to your need. **Ensure you replace your domain and email**.
+- Edit the [.env](https://github.com/sulu5890/searx-traefik-docker/blob/master/.env) file according to your need. **Ensure you replace your domain and email**.
 - Check everything is working: ```./start.sh```,
 - ```cp searx-docker.service.template searx-docker.service```
 - edit the content of ```WorkingDirectory``` in the ```searx-traefik-docker.service``` file (only if the installation path is different from /usr/local/searx-traefik-docker)
@@ -39,7 +37,7 @@ The searx image proxy is activated by default using [Morty](https://github.com/a
 
 The default [Content-Security-Policy](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy) allow the browser to access to {SEARX_HOSTNAME} and ```https://*.tile.openstreetmap.org;```.
 
-If some users wants to disable the image proxy, you have to modify [docker-compose.yaml](https://gitlab.com/hikarusulu/searx-traefik-docker/-/blob/master/docker-compose.yaml). Replace the ```img-src 'self' data: https://*.tile.openstreetmap.org;``` by ```img-src * data:;```
+If some users wants to disable the image proxy, you have to modify [docker-compose.yaml](https://github.com/sulu5890/searx-traefik-docker/blob/master/docker-compose.yaml). Replace the ```img-src 'self' data: https://*.tile.openstreetmap.org;``` by ```img-src * data:;```
 
 Keep in mind that it is best practice to leave the proxy enabled.
 

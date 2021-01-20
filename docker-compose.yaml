@@ -67,20 +67,6 @@ services:
       # Header middleware for searx CSP
       - "traefik.http.middlewares.searx-csp-headers.headers.contentSecurityPolicy=upgrade-insecure-requests; default-src 'none'; script-src 'self'; style-src 'sef' 'unsafe-inline'; form-action 'self'; font-src 'self'; frame-ancestors 'self'; base-uri 'self'; connect-src 'self' https://overpass-api.de; img-src 'self' data: https://*.tile.openstreetmap.org; frame-src https://www.youtube-nocookie.com https://player.vimeo.com https://www.dailymotion.com https://www.deezer.com https://www.mixcloud.com https://w.soundcloud.com https://embed.spotify.com"
 
-  gostatic:
-    container_name: "gostatic"
-    image: pierrezemb/gostatic
-    restart: unless-stopped
-    volumes:
-      - searx-checker:/srv/http
-    labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.searx-status.rule=Host(`${SEARX_HOSTNAME:-localhost}`) && Path(`/status`)"
-      - "traefik.http.routers.searx-status.tls.certresolver=letsencrypt"
-      - "traefik.http.routers.searx-status.entrypoints=https"
-      - "traefik.http.routers.searx-status.middlewares=searx-global-headers@docker,searx-api-headers@docker,searx-dynamic-headers@docker,searx-csp-headers@docker"
-      - "traefik.http.services.gostatic-searx-traefik-docker.loadbalancer.server.port=8043"
-
   filtron:
     container_name: "filtron"
     image: dalf/filtron
@@ -147,14 +133,5 @@ services:
       - "traefik.http.routers.searx-morty.entrypoints=https"
       - "traefik.http.routers.searx-morty.middlewares=searx-global-headers@docker,searx-dynamic-headers@docker,searx-morty-csp-headers@docker"
 
-  searx-checker:
-    container_name: searx-checker
-    image: searx/searx-checker
-    restart: unless-stopped
-    command: -cron -o html/data/status http://searx:8080
-    volumes:
-      - searx-checker:/usr/local/searx-checker/html/data:rw
-
 volumes:
-  searx-checker:
   traefik-certificates:
