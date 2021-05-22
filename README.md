@@ -1,3 +1,8 @@
+# WARNING
+
+## This was made very quickly for a reddit comment and does have issues that I don't really care to fix. This should only be used as a reference of how you might go about doing this. While I made the mistake of using the latest tag, this was only very breifly tested with 0.18.
+
+
 # searx-traefik-docker
 
 A simple way to create a searx instance, using traefik. To use this you do need a domain. This is currently not set up for a local server.
